@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+ENV/
+debug_*.jpg
+results.json
+images/
+uploads/
+ffmpeg/
+tesseract/
