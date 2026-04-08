@@ -10,3 +10,7 @@ images/
 uploads/
 ffmpeg/
 tesseract/
+
+*.wav
+
+*.tmp
