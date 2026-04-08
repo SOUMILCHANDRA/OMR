@@ -1,49 +1,86 @@
-# AI Teacher Assistant & OMR Scanner
+# 📝 AutoGraderPro — OMR Evaluation System
 
-A modern GUI application that combines an Intelligent OMR (Optical Mark Recognition) Scanner with a Voice Coaching module using OpenAI Whisper.
+AutoGraderPro is an automated Optical Mark Recognition (OMR) system designed to evaluate multiple-choice answer sheets from scanned images.
 
-## 🚀 Features (What it CAN do)
-1.  **High-Precision OMR Scanning**:
-    *   **90 Questions Support**: Specifically tuned for 5-column, 90-row OMR sheets.
-    *   **Global Grid Alignment**: Automatically detects the page structure and fits a master grid to eliminate "row drift" or misalignment.
-    *   **Differential Scoring**: Compares bubble darkness against its neighbors to ignore printed borders and detect even faint pencil marks.
-    *   **Visual Feedback**: Generates `debug_` images showing **Blue Boxes** (Answer Key) vs. **Green/Red Boxes** (Student Detection).
-2.  **Automated Grading**:
-    *   Loads `answer_key.json` to calculate scores instantly.
-    *   Calculates Score, Correct, Wrong, and Unanswered counts.
-3.  **Voice Coach**:
-    *   Transcribes audio lessons/recordings using OpenAI Whisper.
-    *   Analyzes pace (Words Per Minute).
-    *   Detects filler words (um, uh) to help teachers improve their delivery.
-4.  **Modern Dark GUI**:
-    *   Industrial dark theme with a terminal-style log for real-time processing feedback.
-    *   Integrated card-based navigation.
+---
 
-## ⚠️ Limitations (What it CAN'T do Yet)
-1.  **Non-Standard Layouts**: Currently hardcoded for a specific 5-column / 18-row-per-column (90 questions) sheet layout.
-2.  **Severe Distortion**: While it handles minor skews, extremely crumpled or heavily rotated (e.g., upside down) sheets might fail detection.
-3.  **Handwriting Recognition**: It extracts the Candidate Name/Roll No using OCR, but performance varies based on text clarity (it does not read cursive well).
-4.  **Multiple Marks**: If a student bubbles two options for one question, it currently picks the darkest one but doesn't flag it as "Multi-marked" invalid (future update).
+## 🚀 Problem
 
-## 🛠 Libraries Used
-*   `opencv-python`: Image processing and bubble detection.
-*   `numpy`: Numerical calculations for grid fitting.
-*   `pytesseract`: Tesseract OCR for header text extraction.
-*   `imutils`: Image utility functions.
-*   `openai-whisper`: AI-powered transcription.
-*   `tkinter`: GUI framework.
-*   `pydantic` / `json`: Data structuring.
+Manual checking of OMR sheets is time-consuming, error-prone, and inefficient for large-scale examinations.
+
+---
+
+## 💡 Solution
+
+This system uses **computer vision techniques** to detect marked answers from scanned sheets and automatically evaluate them against an answer key.
+
+---
+
+## 🧠 Key Features
+
+* 📄 OMR sheet detection from images
+* 🎯 Bubble recognition and answer extraction
+* ⚡ Automatic scoring system
+* 📊 Result generation
+
+---
+
+## ⚙️ How It Works
+
+1. Input image of OMR sheet
+2. Image preprocessing (grayscale, thresholding)
+3. Contour detection to locate answer regions
+4. Bubble detection and marking analysis
+5. Comparison with answer key
+6. Score calculation
+
+---
+
+## 🏗️ Tech Stack
+
+* **Language:** Python
+* **Libraries:** OpenCV, NumPy
+* **Image Processing:** Thresholding, contour detection
+
+---
+
+## 📊 Output
+
+* Detected answers
+* Final score
+* Visual marking of correct/incorrect responses
+
+---
+
+## ⚠️ Challenges
+
+* Handling different lighting conditions
+* Aligning skewed or rotated sheets
+* Noise in scanned images
+
+---
+
+## 🔮 Future Improvements
+
+* Support for multiple OMR formats
+* Batch processing system
+* Integration with web interface
+* AI-based error correction
+
+---
 
 ## 📦 Installation
-1.  **Install Tesseract OCR**: [Download here](https://github.com/UB-Mannheim/tesseract/wiki/download) and ensure it's at `C:\Program Files\Tesseract-OCR\tesseract.exe`.
-2.  **Install FFmpeg**: Required for the Voice Coach (Whisper).
-3.  **Python Dependencies**:
-    ```bash
-    pip install opencv-python numpy pytesseract imutils openai-whisper
-    ```
 
-## 📋 How to Use
-1.  Run `python gui_app.py`.
-2.  Click **"Edit Answer Key"** to set your correct answers.
-3.  Click **"Scan Sheet"** to process a student's paper.
-4.  Switch to **"Voice Coach"** to analyze audio recordings.
+```bash id="z0r9w9"
+git clone https://github.com/SOUMILCHANDRA/OMR
+cd OMR
+pip install -r requirements.txt
+python main.py
+```
+
+---
+
+## 👤 Author
+
+Soumil Chandra
+Full Stack & Data Visualization Engineer
